@@ -23,11 +23,12 @@ services:
         volumes:
             - .:/app
         command: install
-    npm:
+    node:
         image: node
+        working_dir: /var/www/html
         volumes:
-            - .:/app
-        command: install
+            - .:/var/www/html
+        command: npm install
     db:
         image: postgres:10.1
         restart: always

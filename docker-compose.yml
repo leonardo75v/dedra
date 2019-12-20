@@ -12,7 +12,7 @@ services:
             - php
             - db
     php:
-        build: .docker
+        image: php:7.1-fpm
         restart: always
         volumes:
             - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini

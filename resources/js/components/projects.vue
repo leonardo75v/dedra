@@ -1,26 +1,24 @@
-import Vue from 'vue';
-import router from './router';
-import App from './components/App';
-require('./bootstrap');
+<template>
+<div>
+<div class="well" id="well">
+	<div class="panel">one</div>
+	<div class="panel">two <span class="top">&uarr;</span></div>
+	<div class="panel">three <span class="top">&uarr;</span></div>
+	<div class="panel">four <span class="top">&uarr;</span></div>
+	<div class="panel">five <span class="top">&uarr;</span></div>
 
+</div>
 
-var app = new Vue({
-  el: '#app',
-  components: {
-    App
-  },
-  router
-});
-/*
-router.afterEach((to, from) => {
-  console.log("asdasd");
-});
-*/
+</div>
 
+</template>
 
-function asdasd(){
+<script>
+export default {
+ mounted(){
+	 (function() {
 	"use strict";
-
+	/*[pan and well CSS scrolls]*/
 	var pnls = document.querySelectorAll('.panel').length,
 		scdir, hold = false;
 
@@ -28,9 +26,11 @@ function asdasd(){
 		var slength, plength, pan, step = 100,
 			vh = window.innerHeight / 100,
 			vmin = Math.min(window.innerHeight, window.innerWidth) / 100;
+
 		if ((this !== undefined && this.id === 'well') || (obj !== undefined && obj.id === 'well')) {
 			pan = this || obj;
 			plength = parseInt(pan.offsetHeight / vh);
+
 		}
 		if (pan === undefined) {
 			return;
@@ -53,7 +53,7 @@ function asdasd(){
 		}
 		console.log(scdir + ':' + slength + ':' + plength + ':' + (plength - plength / pnls));
 	}
-
+	/*[swipe detection on touchscreen devices]*/
 	function _swipe(obj) {
 		var swdir,
 			sX,
@@ -61,24 +61,24 @@ function asdasd(){
 			dX,
 			dY,
 			threshold = 100,
-	
+			/*[min distance traveled to be considered swipe]*/
 			slack = 50,
-		
+			/*[max distance allowed at the same time in perpendicular direction]*/
 			alT = 500,
-			
-			elT, 
-			stT; 
+			/*[max time allowed to travel that distance]*/
+			elT, /*[elapsed time]*/
+			stT; /*[start time]*/
 		obj.addEventListener('touchstart', function(e) {
 			var tchs = e.changedTouches[0];
 			swdir = 'none';
 			sX = tchs.pageX;
 			sY = tchs.pageY;
 			stT = new Date().getTime();
-		
+			//e.preventDefault();
 		}, false);
 
 		obj.addEventListener('touchmove', function(e) {
-			e.preventDefault(); 
+			e.preventDefault(); /*[prevent scrolling when inside DIV]*/
 		}, false);
 
 		obj.addEventListener('touchend', function(e) {
@@ -106,7 +106,9 @@ function asdasd(){
 			}
 		}, false);
 	}
+	/*[assignments]*/
 	var well = document.getElementById('well');
+	console.log(well);
 	well.style.transform = 'translateY(0)';
 	well.addEventListener('wheel', function(e) {
 		if (e.deltaY < 0) {
@@ -126,5 +128,10 @@ function asdasd(){
 			_scrollY(well);
 		});
 	}
+})();
+
+	 
+ }
 }
 
+</script>

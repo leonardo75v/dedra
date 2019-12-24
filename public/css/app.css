@@ -5,6 +5,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.header {
+  position: fixed;
+  z-index: 999;
+}
+
 .well {
   position: relative;
   overflow: hidden;

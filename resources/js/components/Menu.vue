@@ -34,9 +34,9 @@
         >
           <slot name="body">
              <ul>
-      <li><router-link :to="{ path: '/'}">ГЛАВНАЯ</router-link></li>
-      <li><router-link :to="{ path: '/projects'}">ПРОЕКТЫ</router-link></li>
-      <li><router-link :to="{ path: '/contacts'}">КОНТАКТЫ</router-link></li>
+      <li><router-link @click.native="close" :to="{ path: '/'}"><span>ГЛАВНАЯ</span></router-link></li>
+      <li><router-link @click.native="close" :to="{ path: '/projects'}"><span>ПРОЕКТЫ</span></router-link></li>
+      <li><router-link @click.native="close" :to="{ path: '/contacts'}"><span>КОНТАКТЫ</span></router-link></li>
     </ul>
           </slot>
         </section>

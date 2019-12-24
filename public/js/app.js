@@ -20406,6 +20406,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "header" },
     [
       _c(
         "button",
@@ -20488,20 +20489,17 @@ var render = function() {
                   _c(
                     "li",
                     [
-                      _c("router-link", { attrs: { to: { path: "/" } } }, [
-                        _vm._v("ГЛАВНАЯ")
-                      ])
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "li",
-                    [
                       _c(
                         "router-link",
-                        { attrs: { to: { path: "/projects" } } },
-                        [_vm._v("ПРОЕКТЫ")]
+                        {
+                          attrs: { to: { path: "/" } },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.close($event)
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("ГЛАВНАЯ")])]
                       )
                     ],
                     1
@@ -20512,8 +20510,34 @@ var render = function() {
                     [
                       _c(
                         "router-link",
-                        { attrs: { to: { path: "/contacts" } } },
-                        [_vm._v("КОНТАКТЫ")]
+                        {
+                          attrs: { to: { path: "/projects" } },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.close($event)
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("ПРОЕКТЫ")])]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "li",
+                    [
+                      _c(
+                        "router-link",
+                        {
+                          attrs: { to: { path: "/contacts" } },
+                          nativeOn: {
+                            click: function($event) {
+                              return _vm.close($event)
+                            }
+                          }
+                        },
+                        [_c("span", [_vm._v("КОНТАКТЫ")])]
                       )
                     ],
                     1
